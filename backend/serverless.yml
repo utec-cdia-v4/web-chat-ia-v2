@@ -22,28 +22,56 @@ functions:
       - http:
           path: /chats
           method: post
-          cors: true
+          cors:
+            origin: '*'
+            headers:
+              - Content-Type
+              - Authorization
+            methods:
+              - OPTIONS
+              - POST
   listChats:
     handler: handler.list_chats
     events:
       - http:
           path: /chats
           method: get
-          cors: true
+          cors:
+            origin: '*'
+            headers:
+              - Content-Type
+              - Authorization
+            methods:
+              - OPTIONS
+              - GET
   getChat:
     handler: handler.get_chat
     events:
       - http:
           path: /chats/{chatId}
           method: get
-          cors: true
+          cors:
+            origin: '*'
+            headers:
+              - Content-Type
+              - Authorization
+            methods:
+              - OPTIONS
+              - GET
   sendMessage:
     handler: handler.send_message
     events:
       - http:
           path: /chats/{chatId}/messages
           method: post
-          cors: true
+          cors:
+            origin: '*'
+            headers:
+              - Content-Type
+              - Authorization
+            methods:
+              - OPTIONS
+              - POST
 
 resources:
   Resources:
