@@ -45,10 +45,14 @@ def chat_completion(messages):
         )
     }
 
+    print(headers) 
+
     payload = {
         "model": MODEL_NAME,
         "messages": messages
     }
+
+    print(payload)  
 
     data_bytes = json.dumps(payload).encode("utf-8")
 
@@ -62,9 +66,7 @@ def chat_completion(messages):
                 break
         except HTTPError as exc:
             error_body = exc.read().decode("utf-8") if exc.fp else ""
-            message = _parse_error_message(error_body)
-            print(payload)  
-            print(headers)              
+            message = _parse_error_message(error_body)           
             last_error = RuntimeError(f"Groq API error: {exc.code} {message}".strip())
             if not _should_retry(exc.code) or attempt >= MAX_RETRIES:
                 raise last_error from exc
