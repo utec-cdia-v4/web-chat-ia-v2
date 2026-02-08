@@ -59,6 +59,7 @@ def chat_completion(messages):
         except HTTPError as exc:
             error_body = exc.read().decode("utf-8") if exc.fp else ""
             message = _parse_error_message(error_body)
+            print(payload)             
             last_error = RuntimeError(f"Groq API error: {exc.code} {message}".strip())
             if not _should_retry(exc.code) or attempt >= MAX_RETRIES:
                 raise last_error from exc
