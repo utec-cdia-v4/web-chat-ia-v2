@@ -6,6 +6,7 @@ provider:
   name: aws
   region: us-east-1
   runtime: python3.14
+  timeout: 25    
   environment:
     GROQ_API_KEY: ${env:GROQ_API_KEY}
     CHAT_TABLE: ${self:custom.chatTable}
