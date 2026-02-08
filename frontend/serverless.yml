@@ -1,6 +1,6 @@
 org: geraldocolchado
 app: web-chat-ia
-service: web-ia
+service: web-chat-ia
 
 provider:
   name: aws
@@ -49,4 +49,5 @@ resources:
   Outputs:
     WebsiteURL:
       Value: !GetAtt WebChatBucket.WebsiteURL
+
 
